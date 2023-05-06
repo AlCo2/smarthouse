@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const index = () => {
+const AddNote = (props) => {
   return (
     <div className='addNoteDiv'>
       <div className='NoteHeader'>
         <p>New Note</p>
+        <i onClick={()=>props.setShowNote(false)} class="fa-solid fa-xmark closeNote"></i>
       </div>
       <div className='noteName'>
         <p>Name:</p>
@@ -14,10 +15,10 @@ const index = () => {
         <textarea name="" id="" cols="30" rez rows="10"></textarea>
       </div>
       <div className='noteSubmite'>
-        <button className='noteAddBtn'>+ Add a note</button>
+        <button onClick={()=>{props.setShowNote(false);}} className='noteAddBtn'>+ Add a note</button>
       </div>
     </div>
   )
 }
 
-export default index;
+export default AddNote

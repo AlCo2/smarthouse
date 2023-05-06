@@ -1,19 +1,22 @@
-import React from 'react'
-
+import AddNote from '@/components/addNote/AddNote';
+import React, { useState } from 'react'
 
 const index = () => {
+    const [showNote, setShowNote] = useState(false);
+    const [note, setNote] = useState({name:'test', body:'hey'})
+    const [notes, setNotes] = useState([])
   return (
     <>
         <div>
             <nav>
-                <div class="navBrand">
+                <div className="navBrand">
                     <h1>Smart</h1>
-                    <h1 class="brand">Ho</h1>
+                    <h1 className="brand">Ho</h1>
                 </div>
                 <div>
-                    <ul id="navbar" class="navList">
+                    <ul id="navbar" className="navList">
                         <div>
-                            <i id="closeNav" class="fa-solid fa-xmark closeNav"></i>
+                            <i id="closeNav" className="fa-solid fa-xmark closeNav"></i>
                         </div>
                         <li><a href="">Home</a></li>
                         <li><a href="">Dashboard</a></li>
@@ -22,114 +25,117 @@ const index = () => {
                         <li><a href="">Bessie Cooper</a></li>
                     </ul>
                 </div>
-                <a id="openNav" href="#"><i class="fa-solid fa-bars"></i></a>
+                <a id="openNav" href="#"><i className="fa-solid fa-bars"></i></a>
             </nav>
         </div>
         <div id="main">
-            <div class="left">
-                <div class="welcome_bar">
+            <div className="left">
+                <div className="welcome_bar">
                     <h1>Good Morning, Bessie</h1>
                 </div>
-                <div class="insideDiv">
-                    <div class="mainList">
-                        <div class="roomsList">
-                            <p class="arrow"><i class="fa-solid fa-caret-down"></i></p>
+                <div className="insideDiv">
+                    <div className="mainList">
+                        <div className="roomsList">
+                            <p className="arrow"><i className="fa-solid fa-caret-down"></i></p>
                             <ul>
                                 <li><p>livingroom</p></li>
                                 <li><p>Kitchen</p></li>
                                 <li><p>Bathroom</p></li>
                             </ul>
                         </div>
-                        <div class="bigPanel">
-                            <div class="controlPanel">
+                        <div className="bigPanel">
+                            <div className="controlPanel">
                                 <div>
-                                    <p class="controlLabel">Temperature control</p>
-                                    <p class="controlLitleLabel">Xiaomi Mijia Smart Air</p>
+                                    <p className="controlLabel">Temperature control</p>
+                                    <p className="controlLitleLabel">Xiaomi Mijia Smart Air</p>
                                 </div>
                                 <div>
-                                    <label class="switch">
+                                    <label className="switch">
                                         <input type="checkbox"/>
-                                        <span class="slider round"></span>
+                                        <span className="slider round"></span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="controlPanel">
+                            <div className="controlPanel">
                                 <div>
-                                    <p class="controlLabel">Assistant</p>
-                                    <p class="controlLitleLabel">Smart Column Yandex</p>
+                                    <p className="controlLabel">Assistant</p>
+                                    <p className="controlLitleLabel">Smart Column Yandex</p>
                                 </div>
                                 <div>
-                                    <label class="switch">
+                                    <label className="switch">
                                         <input type="checkbox"/>
-                                        <span class="slider round"></span>
+                                        <span className="slider round"></span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="controlPanel">
+                            <div className="controlPanel">
                                 <div>
-                                    <p class="controlLabel">Lights</p>
-                                    <p class="controlLitleLabel">Bulb Essential * 5 lights</p>
+                                    <p className="controlLabel">Lights</p>
+                                    <p className="controlLitleLabel">Bulb Essential * 5 lights</p>
                                 </div>
                                 <div>
-                                    <label class="switch">
+                                    <label className="switch">
                                         <input type="checkbox"/>
-                                        <span class="slider round"></span>
+                                        <span className="slider round"></span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="picPlace">
+                    <div className="picPlace">
                         <img src="" alt=""/>
                     </div>
                 </div>
             </div>
-            <div class="right">
-                <div class="rightTextBackgroundP">
-                    <div class="rightTextFirst"><p>Temperature</p><p>°C</p></div>
+            <div className="right">
+                <div className="rightTextBackgroundP">
+                    <div className="rightTextFirst"><p>Temperature</p><p>°C</p></div>
                     <div><p>16</p></div>
                 </div>
-                <div class="rightText">
-                    <div class="rightTextEnergy">
-                        <div class="rightTextFirst"><p>Energy</p><p>kWH</p></div>
+                <div className="rightText">
+                    <div className="rightTextEnergy">
+                        <div className="rightTextFirst"><p>Energy</p><p>kWH</p></div>
                         <div><p>20</p></div>
                     </div>
-                    <div class="rightTextEnergy">
-                        <div class="rightTextFirst"><p>Humidity</p><p>%</p></div>
+                    <div className="rightTextEnergy">
+                        <div className="rightTextFirst"><p>Humidity</p><p>%</p></div>
                         <div><p>32</p></div>
                     </div>
                 </div>
-                <div class="danger">
-                    <div class="inside_danger">
-                        <p class="danger_q1">N//1</p>
-                        <p class="danger_q2">Replace the light bulbs in the kitchen and bathroom</p>
+                    {showNote?<AddNote setShowNote={setShowNote}/>:''}
+                <div className="danger">
+                    {notes.map((note,i)=>(
+                    <div key={i} className="inside_danger">
+                        <p className="danger_q1">N//{i+1}</p>
+                        <p className="danger_q2">{note.body}</p>
                     </div>
-                    <div class="inside_danger">
-                        <p class="danger_q1">N//2</p>
-                        <p class="danger_q2">Buy a smart speaker station for mom</p>
+                    ))
+                    }
+                    <div className='addDangerDiv'>
+                        <p onClick={()=>{setShowNote(true);}}>+ Add a note</p>
                     </div>
                 </div>
-                <div class="weather">
+                <div className="weather">
                     <div>
                         <p>Weather</p>
                     </div>
-                    <div class="inner_weather">
+                    <div className="inner_weather">
                         <p>Rabat</p>
                         <p>+8°</p>
                     </div>
                 </div>
-                <div class="support">
-                    <div class="suppfirstdiv">
+                <div className="support">
+                    <div className="suppfirstdiv">
                         <p>Support</p>
-                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <i className="fa-sharp fa-solid fa-star"></i>
                     </div>
-                    <div class="inner_support">
-                        <div class="suppPicPlace">
-                            <img class="suppPic" src="/abdoupic.jpg" alt=""/>
-                            <img class="suppPic" src="/download.jpeg" alt=""/>
-                            <img class="suppPic" src="/s.jpeg" alt=""/>
+                    <div className="inner_support">
+                        <div className="suppPicPlace">
+                            <img className="suppPic" src="/abdoupic.jpg" alt=""/>
+                            <img className="suppPic" src="/download.jpeg" alt=""/>
+                            <img className="suppPic" src="/s.jpeg" alt=""/>
                         </div>
-                        <p class="suppP">$24.944.00</p>
+                        <p className="suppP">$24.944.00</p>
                     </div>
                 </div>
             </div>

@@ -50,7 +50,7 @@ nav{
 .navList{
     display: flex;
     gap: 5px;
-    margin-right: 10px;
+    margin-right: 20px;
     font-family: 'Open sans';
 }
 .navList li, a{
@@ -61,12 +61,12 @@ nav{
 
 .navList li{
     background-color: #242424;
-    height: 30px;
-    width: 140px;
+    height: 40px;
+    width: 150px;
     padding-top: 2px;
     padding-left: 10px;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 #main{
@@ -89,14 +89,14 @@ nav{
     gap: 3px;
 }
 .rightTextBackgroundP {
-    width: 85%;
+    width: 90%;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-left: 5px;
     border-radius: 8px;
     background-color: #242424;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -105,21 +105,21 @@ nav{
     opacity: 80%;
 }
 .rightTextBackgroundP .rightTextFirst p:nth-child(1){
-    padding-left: 10px;
+    padding-left: 12px;
     padding-right: 3px;
 }
 .rightTextBackgroundP .rightTextFirst p:nth-child(2){
     opacity: 40%;
 }
 .rightTextBackgroundP div:nth-child(2) p{
-    font-size: 20px;
+    font-size: 25px;
     color: #8a71f5;
     opacity: 100%;
     padding-right: 10px;
 }
 .rightText{
     display: flex;
-    width: 86%;
+    width: 91%;
     height: 100%;
     gap: 3px;
 }
@@ -137,7 +137,7 @@ nav{
     align-items: center;
 }
 .rightText .rightTextEnergy:nth-child(1){
-    margin-left: 5px;
+    margin-left: 6px;
 }
 .rightTextEnergy .rightTextFirst p:nth-child(1){
     padding-right: 3px;
@@ -147,7 +147,7 @@ nav{
 }
 .rightTextEnergy div:nth-child(2) p{
     padding-right: 10px;
-    font-size: 20px;
+    font-size: 25px;
     color: #8a71f5;
     opacity: 100%;
 }
@@ -158,7 +158,7 @@ nav{
     margin-left: 20px;
 }
 .mainList{
-    width: 300px;
+    width: 400px;
     height: 250px;
 }
 .picPlace{
@@ -171,7 +171,7 @@ nav{
 .welcome_bar{
     background-color: #8a71f5;
     background-image: url(/lines.png);
-    width: 600px;
+    width: 700px;
     height: 200px;
     margin-right: 20px;
     margin-left: 20px;
@@ -216,8 +216,10 @@ nav{
 }
 
 .danger{
-    width: 85%;
-    height: 100px;
+    width: 90%;
+    min-height: 100px;
+    height: fit-content;
+    padding-bottom: 10px;
     color: white;
     background-color: #242424;
     border-radius: 10px;
@@ -239,11 +241,27 @@ nav{
 }
 .danger_q2{
     font-size: 10px;
-    opacity: 30%;
     margin-bottom: 10px;
 }
+
+.addDangerDiv{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.addDangerDiv p{
+    margin-right: 10px;
+    font-size: 14px;
+    color: #8a71f5;
+    cursor: pointer;
+}
+.addDangerDiv p:hover{
+    color: white;
+    transition-duration: 300ms;
+}
+
 .weather{
-    width: 85%;
+    width: 90%;
     height: 150px;
     background-color: #3b96ff;
     margin-left: 5px;
@@ -256,7 +274,7 @@ nav{
 .weather div:nth-child(1){
     padding-left: 15px;
     padding-top: 10px;
-    font-size: 12px;
+    font-size: 16px;
 }
 .inner_weather{
     display: flex;
@@ -267,7 +285,7 @@ nav{
     margin-right: 20px;
 }
 .inner_weather p:nth-child(1){
-    font-size: 14px;
+    font-size: 16px;
     background-color: rgba(255, 255, 255, 0.242);
     height: fit-content;
     padding: 2px;
@@ -283,7 +301,7 @@ nav{
 support
 */
 .support{
-    width: 85%;
+    width: 90%;
     height: 115px;
     background-color: #3ef9a0;
     margin-left: 5px;
@@ -296,7 +314,7 @@ support
 .support div:nth-child(1){
     padding-left: 15px;
     padding-top: 10px;
-    font-size: 12px;
+    font-size: 16px;
 }
 .inner_support{
     display: flex;
@@ -358,7 +376,6 @@ support
     font-size: 8px;
     opacity: 30%;
 }
-
 
 
 
