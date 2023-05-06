@@ -1,15 +1,23 @@
-import AddNote from '@/components/addNote/AddNote';
-import React, { useState } from 'react'
-import { AiFillStar, AiOutlineArrowDown, AiOutlineDownSquare } from 'react-icons/ai';
+import React, { useEffect, useState } from 'react'
+import { AiFillStar,AiOutlineDownSquare } from 'react-icons/ai';
 import NavBar from '@/components/navbar/NavBar';
+import { PrismaClient } from '@prisma/client'
+import AddNote from '@/components/addNote/AddNote';
+
+
+
 
 const index = () => {
     const [showNote, setShowNote] = useState(false);
     const [notes, setNotes] = useState([]);
-    const pushToNotes = (value) =>{
-        setNotes(notes => [...notes, value]);
-    }
-    
+    useEffect(() => {
+        async function fetchUsers() {
+          const res = await fetch('/api/notes')
+          const data = await res.json()
+          setNotes(data)
+        }
+        fetchUsers()
+      }, [])
   return (
     <>
         <NavBar/>
@@ -87,12 +95,12 @@ const index = () => {
                         <div><p>32</p></div>
                     </div>
                 </div>
-                    {showNote?<AddNote setShowNote={setShowNote} pushToNotes={pushToNotes}/>:''}
+                    {showNote?<AddNote setShowNote={setShowNote} />:''}
                 <div className="danger">
                     {notes.map((note,i)=>(
-                    <div key={i} className="inside_danger">
+                    <div key={note.note_id} className="inside_danger">
                         <p className="danger_q1">N//{i+1}</p>
-                        <p className="danger_q2">{note.body}</p>
+                        <p className="danger_q2">{note.note_body}</p>
                     </div>
                     ))
                     }
