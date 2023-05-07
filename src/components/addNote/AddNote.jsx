@@ -3,8 +3,7 @@ import {AiOutlineClose} from 'react-icons/ai'
 import { useSession } from 'next-auth/react';
 
 export default function AddNote(props){
-  const {data: session} = useSession();
-
+  const {data:session} = useSession();
   const bodyRef = useRef(null);
   const nameRef = useRef(null);
   async function handleClick(e) {

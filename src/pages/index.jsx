@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AiFillStar,AiOutlineDownSquare } from 'react-icons/ai';
 import NavBar from '@/components/navbar/NavBar';
 import AddNote from '@/components/addNote/AddNote';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import Login from '@/components/login/Login';
 
 
@@ -21,7 +21,6 @@ export default function index(){
     async function deleteNote(id){
         const res = await fetch(`/api/delete-note?id=${id}`)
     }
-    let now = new Date();
     if(!session){
         return(
             <Login/>
