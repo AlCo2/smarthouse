@@ -1,20 +1,28 @@
 import React, { useRef, useState } from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
-const AddNote = (props) => {
+import { useSession } from 'next-auth/react';
+
+export default function AddNote(props){
+  const {data: session} = useSession();
+
   const bodyRef = useRef(null);
   const nameRef = useRef(null);
   async function handleClick(e) {
+    e.preventDefault()
+    const user_id = session.user.id;
     const note_name = nameRef.current.value;
     const note_body = bodyRef.current.value;
+    
     const res = await fetch('/api/add-notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ note_name, note_body }),
+      body: JSON.stringify({ name:note_name, body:note_body, userId:user_id}),
     })
     const data = await res.json()
-    console.log(data);
+    props.fetchNote();
+    props.setShowNote(false);
   }
   return (
     <form onSubmit={handleClick} className='addNoteDiv'>
@@ -35,5 +43,3 @@ const AddNote = (props) => {
     </form>
   )
 }
-
-export default AddNote

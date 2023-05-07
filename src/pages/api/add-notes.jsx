@@ -4,10 +4,10 @@ const prisma = new PrismaClient()
 
 export default async function handler(req, res) {
     if(req.method=='POST'){
-        const {note_name, note_body} = req.body
+        const {name, body,userId} = req.body
         const note = await prisma.notes.create({
             data:{
-                note_name, note_body,
+                name, body,userId
             },
         })
         res.status(201).json(note);

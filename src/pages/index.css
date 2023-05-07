@@ -231,10 +231,29 @@ nav{
     display: flex;
     gap: 12px;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 5px;
     margin-top: 5px;
 }
-
+.danger_note{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.danger_delete p{
+    padding-right: 10px;
+    font-size: 10px;
+    opacity: 0;
+    transition-duration: 100ms;
+    cursor: pointer;
+}
+.danger_delete p:hover{
+    color: #3b96ff;
+}
+.inside_danger:hover .danger_delete p{
+    opacity: 100%;
+}
 .danger_q1{
     font-size: 12px;
     margin-left: 12px;

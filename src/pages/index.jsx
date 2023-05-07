@@ -1,30 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import { AiFillStar,AiOutlineDownSquare } from 'react-icons/ai';
 import NavBar from '@/components/navbar/NavBar';
-import { PrismaClient } from '@prisma/client'
 import AddNote from '@/components/addNote/AddNote';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import Login from '@/components/login/Login';
 
 
-
-
-const index = () => {
+export default function index(){
+    const { data: session} = useSession()
     const [showNote, setShowNote] = useState(false);
     const [notes, setNotes] = useState([]);
+    async function fetchNotes() {
+        const res = await fetch('/api/noteList')
+        const data = await res.json()
+        setNotes(data)
+    }
     useEffect(() => {
-        async function fetchUsers() {
-          const res = await fetch('/api/notes')
-          const data = await res.json()
-          setNotes(data)
-        }
-        fetchUsers()
+        fetchNotes()
       }, [])
+    async function deleteNote(id){
+        const res = await fetch(`/api/delete-note?id=${id}`)
+    }
+    let now = new Date();
+    if(!session){
+        return(
+            <Login/>
+        )
+    }
   return (
     <>
         <NavBar/>
         <div id="main">
             <div className="left">
                 <div className="welcome_bar">
-                    <h1>Good Morning, Bessie</h1>
+                    <h1>Welcome , {session.user.name}</h1>
                 </div>
                 <div className="insideDiv">
                     <div className="mainList">
@@ -95,12 +104,17 @@ const index = () => {
                         <div><p>32</p></div>
                     </div>
                 </div>
-                    {showNote?<AddNote setShowNote={setShowNote} />:''}
+                    {showNote?<AddNote setShowNote={setShowNote} fetchNote={fetchNotes} />:''}
                 <div className="danger">
                     {notes.map((note,i)=>(
-                    <div key={note.note_id} className="inside_danger">
-                        <p className="danger_q1">N//{i+1}</p>
-                        <p className="danger_q2">{note.note_body}</p>
+                    <div key={note.id} className="inside_danger">
+                        <div className='danger_note'>
+                            <p className="danger_q1">N//{i+1}</p>
+                            <p className="danger_q2">{note.body}</p>
+                        </div>
+                        <div className='danger_delete'>
+                            <p onClick={async ()=>{await deleteNote(note.id);fetchNotes()}}>Delete</p>
+                        </div>
                     </div>
                     ))
                     }
@@ -136,5 +150,3 @@ const index = () => {
     </>
   )
 }
-
-export default index;
