@@ -4,6 +4,7 @@ import NavBar from '@/components/navbar/NavBar';
 import AddNote from '@/components/addNote/AddNote';
 import { useSession } from 'next-auth/react';
 import Login from '@/components/login/Login';
+import RoomsList from '@/components/roomsList/RoomsList';
 
 
 export default function index(){
@@ -37,12 +38,7 @@ export default function index(){
                 <div className="insideDiv">
                     <div className="mainList">
                         <div className="roomsList">
-                            <p className="arrow"><AiOutlineDownSquare/></p>
-                            <ul>
-                                <li><p>livingroom</p></li>
-                                <li><p>Kitchen</p></li>
-                                <li><p>Bathroom</p></li>
-                            </ul>
+                            <RoomsList/>
                         </div>
                         <div className="bigPanel">
                             <div className="controlPanel">
@@ -84,7 +80,7 @@ export default function index(){
                         </div>
                     </div>
                     <div className="picPlace">
-                        <img src="" alt=""/>
+                        <img src="game.jpg" alt=""/>
                     </div>
                 </div>
             </div>

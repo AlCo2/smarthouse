@@ -159,13 +159,17 @@ nav{
 }
 .mainList{
     width: 400px;
-    height: 250px;
+    height: 270px;
 }
 .picPlace{
-    background-image: url(/game.jpg);
     width: 100%;
-    height: 250px;
+    height: 270px;
     margin-left: 3px;
+    border-radius: 10px;
+}
+.picPlace img{
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
 }
 .welcome_bar{
@@ -195,15 +199,21 @@ nav{
     color: #8a71f5;
 }
 .roomsList ul{
-    display: flex;
     list-style: none;
-    gap: 5px;
     font-family: 'Open sans';
     font-size: 13px;
-    height: 10px;
     color: white;
+    display: grid;
+    max-width: 200px;
+    color: white;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    gap: 10px;
 }
-.roomsList ul li{
+.roomsList ul::-webkit-scrollbar{
+    display: none;
+}
+.roomsNotSelected{
     opacity: 20%;
     cursor: pointer;
 }
@@ -211,7 +221,7 @@ nav{
     opacity: 100%;
     transition-duration: 300ms;
 }
-.roomsList ul li:nth-child(2){
+.selectedRoom{
     opacity: 100%;
 }
 
