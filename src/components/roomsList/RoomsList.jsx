@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { AiOutlineDown } from 'react-icons/ai';
 
 export default function RoomsList() {
   const roomsListRef = useRef(null);
@@ -47,10 +48,22 @@ export default function RoomsList() {
   return (
     <div className="roomsList">
       <ul ref={roomsListRef}>
-        <li onClick={()=>setSelectedRoom('livingroom')} className={selectedRoom==='livingroom'?'selectedRoom':'roomsNotSelected'}><p>livingroom</p></li>
-        <li onClick={()=>setSelectedRoom('kitchen')} className={selectedRoom==='kitchen'?'selectedRoom':'roomsNotSelected'}><p>Kitchen</p></li>
-        <li onClick={()=>setSelectedRoom('Bedroom')} className={selectedRoom==='Bedroom'?'selectedRoom':'roomsNotSelected'}><p>Bedroom</p></li>
-        <li onClick={()=>setSelectedRoom('Bathroom')} className={selectedRoom==='Bathroom'?'selectedRoom':'roomsNotSelected'}><p>Bathroom</p></li>
+        <div className='room'>
+          {selectedRoom==='livingroom'?<AiOutlineDown className='arrowInRoom'/>:''}
+          <li onClick={()=>setSelectedRoom('livingroom')} className={selectedRoom==='livingroom'?'selectedRoom':'roomsNotSelected'}><p>livingroom</p></li>
+        </div>
+        <div className='room'>
+          {selectedRoom==='kitchen'?<AiOutlineDown className='arrowInRoom'/>:''}
+          <li onClick={()=>setSelectedRoom('kitchen')} className={selectedRoom==='kitchen'?'selectedRoom':'roomsNotSelected'}><p>Kitchen</p></li>
+        </div>
+        <div className='room'>
+          {selectedRoom==='Bedroom'?<AiOutlineDown className='arrowInRoom'/>:''}
+          <li onClick={()=>setSelectedRoom('Bedroom')} className={selectedRoom==='Bedroom'?'selectedRoom':'roomsNotSelected'}><p>Bedroom</p></li>
+          </div>
+        <div className='room'>
+          {selectedRoom==='Bathroom'?<AiOutlineDown className='arrowInRoom'/>:''}
+          <li onClick={()=>setSelectedRoom('Bathroom')} className={selectedRoom==='Bathroom'?'selectedRoom':'roomsNotSelected'}><p>Bathroom</p></li>
+        </div>
       </ul>
     </div>
   );

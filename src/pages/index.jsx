@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { AiFillStar,AiOutlineDownSquare } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import NavBar from '@/components/navbar/NavBar';
 import AddNote from '@/components/addNote/AddNote';
 import { useSession } from 'next-auth/react';

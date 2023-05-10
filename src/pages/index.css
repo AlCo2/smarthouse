@@ -224,7 +224,16 @@ nav{
 .selectedRoom{
     opacity: 100%;
 }
-
+.arrowInRoom{
+    color: #8a71f5;
+    font-size: 16px;
+}
+.room{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 300ms;
+}
 .danger{
     width: 90%;
     min-height: 100px;
