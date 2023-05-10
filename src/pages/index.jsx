@@ -11,6 +11,7 @@ export default function index(){
     const { data: session} = useSession()
     const [showNote, setShowNote] = useState(false);
     const [notes, setNotes] = useState([]);
+    const [image, setImage] = useState('game.jpg')
     async function fetchNotes() {
         const res = await fetch('/api/noteList')
         const data = await res.json()
@@ -38,7 +39,7 @@ export default function index(){
                 <div className="insideDiv">
                     <div className="mainList">
                         <div className="roomsList">
-                            <RoomsList/>
+                            <RoomsList setImage={setImage}/>
                         </div>
                         <div className="bigPanel">
                             <div className="controlPanel">
@@ -80,7 +81,7 @@ export default function index(){
                         </div>
                     </div>
                     <div className="picPlace">
-                        <img src="game.jpg" alt=""/>
+                        <img src={image} alt=""/>
                     </div>
                 </div>
             </div>

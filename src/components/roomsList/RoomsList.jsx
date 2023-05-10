@@ -1,15 +1,34 @@
 import { useRef, useState, useEffect } from 'react';
 import { AiOutlineDown } from 'react-icons/ai';
 
-export default function RoomsList() {
+export default function RoomsList(props) {
   const roomsListRef = useRef(null);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [selectedRoom, setSelectedRoom] = useState('kitchen');
-  useEffect(() => {
+  const changeImage = () =>{
+    switch(selectedRoom){
+      case 'kitchen':
+        props.setImage('kitchen.jpg');
+        break;
+      case 'livingroom':
+        props.setImage('livingroom.jpg');
+        break;
+      case 'Bedroom':
+        props.setImage('bedroom.jpg');
+        break;
+      case 'Bathroom':
+        props.setImage('bathroom.jpg');
+        break;
+      default:
+        props.setImage('game.jpg');
+        break;
+    }
+  }
+  useEffect( () => {
+    changeImage();
     const roomsList = roomsListRef.current;
-
     const handleMouseDown = (e) => {
       setIsDown(true);
       setStartX(e.pageX - roomsList.offsetLeft);
@@ -43,7 +62,7 @@ export default function RoomsList() {
       roomsList.removeEventListener('mouseup', handleMouseUp);
       roomsList.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isDown, startX, scrollLeft]);
+  }, [isDown, startX, scrollLeft, selectedRoom]);
 
   return (
     <div className="roomsList">
