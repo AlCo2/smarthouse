@@ -1,14 +1,20 @@
 import Login from '@/components/login/Login';
 import NavBar from '@/components/navbar/NavBar';
-import React from 'react'
+import React, { useState } from 'react'
 import { useSession } from 'next-auth/react';
+import EditProfil from '@/components/editProfil/EditProfil';
 
 const settings = () => {
   const {data:session} = useSession();
-
+  const [editMode, setEditMode] = useState(true);
   if(!session){
     return(
         <Login/>
+    )
+  }
+  if(editMode){
+    return(
+     <EditProfil/> 
     )
   }
   return (

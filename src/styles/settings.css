@@ -46,6 +46,28 @@
     border: none;
     outline: none;
     background-color:#8a71f5;
+    cursor: pointer;
+}
+.selectCountry{
+    width: 100px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    outline: none;
+    border: 1px solid #8a71f5;
+    color: black;
+    font-family: 'Poppins';
+    border-radius: 5px;
+}
+.userInputeEdit{
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: 'Poppins';
+    border-bottom: 1px solid white;
+}
+.userConfirmBtn{
+    margin-bottom: 20px;
 }
 .userImg{
     width: 120px;
