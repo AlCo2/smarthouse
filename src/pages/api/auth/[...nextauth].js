@@ -16,6 +16,19 @@ export default NextAuth({
     session: async ({ session, token }) => {
       if (session?.user) {
         session.user.id = token.uid;
+        const user = await prisma.user.findUnique({
+          where:{
+            id:session.user.id,
+          }
+        })
+        session.user.name = user.name;
+        session.user.firstName = user.firstName;
+        session.user.lastName = user.lastName;
+        session.user.phone = user.phone;
+        session.user.country = user.country;
+        session.user.city = user.city;
+        session.user.bio = user.bio;
+        session.user.postalCode = user.postalCode
       }
       return session;
     },

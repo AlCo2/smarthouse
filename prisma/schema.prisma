@@ -55,9 +55,12 @@ model User {
   image         String?
   name          String?
   country       Int?
+  city          String?    @db.VarChar(45)
   firstName     String?    @db.VarChar(45)
   lastName      String?    @db.VarChar(45)
   phone         String?    @db.VarChar(45)
+  postalCode    String?    @db.VarChar(45)
+  bio           String?    @db.VarChar(200)
   accounts      Account[]
   notes         notes[]
   sessions      Session[]
